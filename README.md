@@ -38,7 +38,7 @@ I used Zustand because this UI has several cross-cutting states that must remain
   - A translated inner window (`translateY(start * rowHeight)`)
 - This keeps row count, scroll position, and UX stable at 500+ tasks.
 
-## Drag-and-Drop Implementation (No Libraries)
+## Drag-and-Drop Implementation
 - Implemented in `KanbanView` using pointer events (`pointerdown`, document-level `pointermove`, `pointerup`) for mouse + touch support.
 - While dragging:
   - The original card slot is replaced with a placeholder matching card height.
@@ -54,11 +54,11 @@ Run Lighthouse in Chrome DevTools against the production preview:
 npm run build
 npm run preview
 ```
-Add your screenshot to `public/lighthouse-report.png` and reference it here:
+Add your screenshot to `public/img.png` and reference it here:
 
-![Lighthouse Report](public/lighthouse-report.png)
+![Lighthouse Report](public/img.png)
 
-## Explanation (Hardest UI Problem) - 180 words
+## Explanation (Hardest UI Problem) -
 The hardest part was building a drag-and-drop interaction that feels natural while preserving layout stability and cross-device behavior. Instead of relying on HTML5 drag APIs (which are inconsistent on touch), I implemented pointer-driven dragging with a custom drag ghost and drop-zone detection. The critical issue was preventing layout shift while the user drags a card out of a Kanban column. I solved that by measuring the card’s bounding box at drag start and rendering a placeholder at the source position with the same height and visual weight. This keeps scroll positions and neighboring cards stable, so the UI does not “collapse” mid-drag.
 
 For drop targeting, I used `document.elementsFromPoint` on each pointer move to identify valid status columns and apply active highlighting. If the card is released outside any valid target, the task state is left unchanged and a short snap-back transition plays on the drag ghost to communicate cancellation.
