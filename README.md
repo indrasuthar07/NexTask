@@ -1,4 +1,4 @@
-# Velozity Global Solutions - Technical Assessment
+# Multi-View Project Tracker
 
 Multi-view project tracker UI built with React + TypeScript, featuring:
 - Shared task state across Kanban, List, and Timeline views
