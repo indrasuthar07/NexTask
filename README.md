@@ -49,12 +49,6 @@ I used Zustand because this UI has several cross-cutting states that must remain
   - Invalid area triggers snap-back animation.
 
 ## Lighthouse
-Run Lighthouse in Chrome DevTools against the production preview:
-```bash
-npm run build
-npm run preview
-```
-Add your screenshot to `public/img.png` and reference it here:
 
 ![Lighthouse Report](public/img.png)
 
