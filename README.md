@@ -54,9 +54,3 @@ I used Zustand because this UI has several cross-cutting states that must remain
 
 ![Lighthouse Report](public/img.png)
 
-## Explanation (Hardest UI Problem) -
-The hardest part was building a drag-and-drop interaction that feels natural while preserving layout stability and cross-device behavior. Instead of relying on HTML5 drag APIs (which are inconsistent on touch), I implemented pointer-driven dragging with a custom drag ghost and drop-zone detection. The critical issue was preventing layout shift while the user drags a card out of a Kanban column. I solved that by measuring the card’s bounding box at drag start and rendering a placeholder at the source position with the same height and visual weight. This keeps scroll positions and neighboring cards stable, so the UI does not “collapse” mid-drag.
-
-For drop targeting, I used `document.elementsFromPoint` on each pointer move to identify valid status columns and apply active highlighting. If the card is released outside any valid target, the task state is left unchanged and a short snap-back transition plays on the drag ghost to communicate cancellation.
-
-With more time, I would refactor the Kanban DnD internals into a dedicated hook (`useKanbanDrag`) and add keyboard-accessible drag semantics for improved accessibility.
