@@ -48,7 +48,7 @@ I used Zustand because this UI has several cross-cutting states that must remain
   - Drop columns are detected via `elementsFromPoint(...)` and highlighted.
 - On drop:
   - Valid column updates task status immediately.
-  - Invalid area triggers snap-back animation.
+  - Invalid area triggers snap-back animation
 
 ## Lighthouse
 
